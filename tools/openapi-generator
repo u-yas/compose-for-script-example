@@ -1,0 +1,11 @@
+#!/bin/bash
+
+SCRIPT_DIR=$(
+  cd $(dirname $0)
+  pwd
+)
+
+# root dir
+cd "$SCRIPT_DIR/.." || exit 1
+
+docker compose -f compose-tool.yml run --rm -it openapi-generator "$@"

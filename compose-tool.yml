@@ -1,0 +1,24 @@
+---
+version: "3.7"
+services:
+  # hadolint not distributed apt😢
+  hadolint:
+    image: hadolint/hadolint:latest-alpine
+    tty: true
+  # openapi-generator-cli needs Java😢
+  openapi-generator:
+    image: openapitools/openapi-generator-cli:latest
+    volumes:
+      - .:/local
+    working_dir: /local
+  # curl can connect to compose.yml echo server😆
+  curl:
+    image: curlimages/curl:latest
+    tty: true
+    networks:
+      - my_server
+networks:
+  my_server:
+    external: true
+
+

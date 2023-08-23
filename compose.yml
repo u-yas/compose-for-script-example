@@ -1,0 +1,13 @@
+---
+version: "3.7"
+services:
+  server:
+    container_name: server
+    image: "ealen/echo-server:0.7.1"
+    networks:
+      - my_server
+    ports:
+      - "3000:80"
+networks:
+  my_server:
+    external: true
